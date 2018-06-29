@@ -1,0 +1,36 @@
+{
+  "name": "vue-ts-webcomponent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathan-andosen/vue-ts-webcomponent.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathan-andosen/vue-ts-webcomponent/issues"
+  },
+  "homepage": "https://github.com/nathan-andosen/vue-ts-webcomponent#readme",
+  "devDependencies": {
+    "css-loader": "0.28.11",
+    "html-loader": "1.0.0-alpha.0",
+    "node-sass": "4.9.0",
+    "sass-loader": "7.0.3",
+    "style-loader": "0.21.0",
+    "stylus-loader": "3.0.2",
+    "ts-loader": "4.4.1",
+    "typescript": "2.9.2",
+    "webpack": "4.12.1",
+    "webpack-cli": "3.0.8"
+  },
+  "dependencies": {
+    "vue": "2.5.16",
+    "vue-custom-element": "3.2.1",
+    "vue-property-decorator": "7.0.0"
+  }
+}
