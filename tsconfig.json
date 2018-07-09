@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "./compiled",
+    "target": "es5",
+    "strict": true,
+    // "module": "es2015",
+    "declaration": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./types/**/*.d.ts",
+    "./node_modules/vue-custom-element/index.d.ts"
+  ]
+}
