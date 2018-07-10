@@ -8,18 +8,6 @@
     window.documentRegisterElementScriptPath = './libs/document-register-element.js';
   </script>
   <script src="../dist/example-form.wc.js"></script>
-  <script type="text/javascript">
-    var valuesPolyfill = function objectValues(obj) {
-      var res = [];
-      for (var i in obj) {
-        if (obj.hasOwnProperty(i)) {
-          res.push(obj[i]);
-        }
-      }
-      return res;
-    }
-    if(!Object.values) { Object.values = valuesPolyfill; } 
-  </script>
 </head>
 <body>
   <div id="app"></div>

@@ -1,3 +1,4 @@
+import "./polyfills";
 import { Vue } from "vue-property-decorator";
 import ExampleFormComponent from './example-form.component.vue';
 let comp = new ExampleFormComponent();
@@ -12,7 +13,7 @@ if(!window.customElements || !window.customElements.define
 || !window.customElements.get || !window.customElements.whenDefined) {
   if(window.documentRegisterElementScriptPath) {
     // customElements not natively supported, we have to download the polyfill
-    var fileref = document.createElement('script');
+    const fileref = document.createElement('script');
     fileref.setAttribute("type","text/javascript");
     fileref.setAttribute("src", window.documentRegisterElementScriptPath);
     fileref.onload = function() {

@@ -1378,6 +1378,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+__webpack_require__(/*! ./polyfills */ "./src/polyfills.ts");
 var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
 var example_form_component_vue_1 = __webpack_require__(/*! ./example-form.component.vue */ "./src/example-form.component.vue");
 var comp = new example_form_component_vue_1.default();
@@ -1405,6 +1406,31 @@ if (!window.customElements || !window.customElements.define
 }
 else {
     loadComponent();
+}
+
+
+/***/ }),
+
+/***/ "./src/polyfills.ts":
+/*!**************************!*\
+  !*** ./src/polyfills.ts ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var valuesPolyfill = function objectValues(obj) {
+    var res = [];
+    for (var i in obj) {
+        if (obj.hasOwnProperty(i)) {
+            res.push(obj[i]);
+        }
+    }
+    return res;
+};
+if (!Object.values) {
+    Object.values = valuesPolyfill;
 }
 
 
