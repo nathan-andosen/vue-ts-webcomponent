@@ -3,6 +3,14 @@
 
 Seed app to build a web component using typescript and VueJs.
 
+# Currently working on:
+
+* Create the web component that will contain:
+  * Events that are fired externally
+  * Font icons and an image
+  * Another vue component
+  * Use external css framework like material design??
+
 # Tasks / Functionality required
 
 * One JS file that contains all code (css, font icons, images and javascript)
