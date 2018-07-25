@@ -13,6 +13,7 @@ Seed app to build a web component using typescript and VueJs.
 
 # Tasks / Functionality required
 
+* Setup a nice dev workflow
 * One JS file that contains all code (css, font icons, images and javascript)
 * One build that outputs different formats.
   * Need a umd build, so it can be used directly in the browser or via npm, it 
@@ -29,3 +30,12 @@ Seed app to build a web component using typescript and VueJs.
 * Unit tests and e2e tests
 * How to use an external library like material design or bootstrap
 
+
+
+# Size of component
+
+* __Initial size:__ 15kb min
+  * Bare bones, only displays simple text
+* __Full component:__ ??kb min
+  * Includes css framework (material design)
+  * Some font icons
