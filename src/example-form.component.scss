@@ -1,7 +1,17 @@
 @import "@material/card/mdc-card";
+@import "./assets/icomoon/style";
 
 .example-form {
+  width: 400px;
+  margin: 0 auto;
+
   .txt {
     color: #ff0000;
+  }
+
+  .logo {
+    background-image: url("./assets/images/fake-logo.png");
+    height: 300px;
+    width: 400px;
   }
 }

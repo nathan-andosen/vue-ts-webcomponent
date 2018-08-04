@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+  <script src="../node_modules/vue/dist/vue.runtime.js"></script>
+  <script src="../node_modules/vue-custom-element/dist/vue-custom-element.js"></script>
+  <script type="text/javascript">
+    window.documentRegisterElementScriptPath = './polyfills/document-register-element.js';
+  </script>
+  <script src="./dist/example-form.umd.novue.min.js"></script>
+</head>
+<body>
+  <div id="app">This text is outside the web component</div>
+  <example-form></example-form>
+</body>
+</html>

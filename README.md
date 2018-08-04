@@ -13,14 +13,15 @@ Seed app to build a web component using typescript and VueJs.
 
 # Tasks / Functionality required
 
-* Setup a nice dev workflow
-* One JS file that contains all code (css, font icons, images and javascript)
-* One build that outputs different formats.
-  * Need a umd build, so it can be used directly in the browser or via npm, it 
-  will include all dependencies expect vuejs
-  * A umd build that excludes all the dependencies as they are peer dependencies
-* Build as web component using vue-custom-element (so we have support for IE11)
-* Scoped css
+* (DONE) Setup a nice dev workflow
+  * Uses grunt with livereload and starts an express server
+* (DONE) One JS file that contains all code (css, font icons, images and javascript)
+* (DONE) One build that outputs different formats.
+  * UMD build with all code (including vuejs frameowrk)
+  * UMD build without vuejs & vue-custom-element
+  * ES build to be used in apps that are using another module bundler
+* (DONE) Build as web component using vue-custom-element (so we have support for IE11)
+* (DONE) Scoped css
 * Give examples of how to use with external events and functions
 * Should be able to use other .vue components inside this component
 * Give examples of using this component in the following scenarios:
@@ -28,7 +29,7 @@ Seed app to build a web component using typescript and VueJs.
   * Inside an Angular application
   * Inside a static application with no js libraries (no npm)
 * Unit tests and e2e tests
-* How to use an external library like material design or bootstrap
+* (DONE) How to use an external library like material design
 
 
 

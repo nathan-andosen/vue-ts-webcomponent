@@ -1,11 +1,29 @@
 import "./polyfills";
 import { Vue } from "vue-property-decorator";
+import VueCustomElement from 'vue-custom-element';
 import ExampleFormComponent from './example-form.component.vue';
-let comp = new ExampleFormComponent();
+const component: any = ExampleFormComponent;
+const componentName = 'example-form';
 
-const loadComponent = () => {
-  Vue.customElement('example-form', comp.$options);
+Vue.use(VueCustomElement);
+
+/**
+ * Load the web component
+ *
+ */
+const loadWebComponent = () => {
+  // for some reason rollupjs plugin rollup-plugin-vue does not output the 
+  // same as webpack, so the component is inside a property called components
+  if(component['components']) {
+    let c = new component['components'].ExampleFormComponent();
+    Vue.customElement(componentName, c.$options);
+  } else {
+    // handle webpack build
+    let c = new component();
+    Vue.customElement(componentName, c.$options);
+  }
 };
+
 
 // check if customElements is supported, if not, we need to download the 
 // polyfill
@@ -17,7 +35,7 @@ if(!window.customElements || !window.customElements.define
     fileref.setAttribute("type","text/javascript");
     fileref.setAttribute("src", window.documentRegisterElementScriptPath);
     fileref.onload = function() {
-      loadComponent();
+      loadWebComponent();
     };
     document.getElementsByTagName("head")[0].appendChild(fileref);
   } else {
@@ -25,7 +43,7 @@ if(!window.customElements || !window.customElements.define
     'document-register-element polyfill');
   }
 } else {
-  loadComponent();
+  loadWebComponent();
 }
 
 

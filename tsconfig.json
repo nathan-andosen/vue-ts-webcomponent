@@ -5,7 +5,7 @@
     "strict": true,
     // "module": "es2015",
     // "declaration": true,
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true

@@ -10,6 +10,7 @@
 /config.json
 /log
 .nsprc
+.rpt2_cache/
 
 # OS generated files #
 ######################
