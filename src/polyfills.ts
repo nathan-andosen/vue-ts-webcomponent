@@ -1,6 +1,6 @@
 // Polyfill for Object.values
 const valuesPolyfill = (obj: Object) => {
-  const res = [];
+  const res: any[] = [];
   for (const i in obj) {
     if (obj.hasOwnProperty(i)) res.push((obj as any)[i]);
   }

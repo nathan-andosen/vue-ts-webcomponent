@@ -1,4 +1,10 @@
-@import "@material/card/mdc-card";
+// @import "@material/card/mdc-card";
+// @import "@material/textfield/mdc-text-field";
+@import "material-components-vue/dist/card/styles";
+@import "material-components-vue/dist/button/styles";
+@import "material-components-vue/dist/textfield/styles";
+@import "material-components-vue/dist/floating-label/styles";
+@import "material-components-vue/dist/line-ripple/styles";
 @import "./assets/icomoon/style";
 
 .example-form {
