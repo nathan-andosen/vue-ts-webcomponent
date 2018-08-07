@@ -1,20 +1,10 @@
 import "./polyfills";
 import { Vue } from "vue-property-decorator";
 import VueCustomElement from 'vue-custom-element';
-
-import Card from 'material-components-vue/dist/card';
-import Button from 'material-components-vue/dist/button';
-import TextField from 'material-components-vue/dist/textfield';
-import FloatingLabel from 'material-components-vue/dist/floating-label';
-import LineRipple from 'material-components-vue/dist/line-ripple';
-
-console.log(Card);
-
-Vue.use(Card);
-Vue.use(Button);
-Vue.use(TextField);
-Vue.use(FloatingLabel);
-Vue.use(LineRipple);
+// require('bootstrap');
+import "jquery/dist/jquery.slim.js";
+import "popper.js";
+import "bootstrap";
 
 import ExampleFormComponent from './example-form.component.vue';
 const component: any = ExampleFormComponent;

@@ -1,9 +1,12 @@
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import FooterComponent from './components/footer/footer.component.vue';
-// import {MDCTextField} from '@material/textfield';
 
 
-
+interface iData {
+  email?: string;
+  password?: string;
+  rememberMe?: boolean;
+}
 
 @Component({
   components: {
@@ -11,11 +14,33 @@ import FooterComponent from './components/footer/footer.component.vue';
   }
 })
 export default class ExampleFormComponent extends Vue {
-  text: string = "Testing";
+  email: string = "";
+  password: string = "";
+  rememberMe: boolean = false;
 
+  @Prop() data!: iData;
+  @Prop() title!: string;
 
-  mounted() {
-    
+  constructor() {
+    super();
+    if(typeof this.data === 'string') {
+      this.data = JSON.parse(this.data);
+    }
+    this.data = (this.data) ? this.data : {};
+    this.title = (this.title) ? this.title : 'Welcome!';
   }
 
+  private getData(): iData {
+    return JSON.parse(JSON.stringify(this.data));
+  }
+
+  @Watch('data')
+  onDataChanged(val: iData, oldVal: iData) {
+    console.log('Data changed', this.getData());
+  }
+
+  submitForm() {
+    // console.log(this.email, this.password, this.rememberMe);
+    this.$emit('example-form-submit', this.getData());
+  }
 }

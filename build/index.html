@@ -8,9 +8,23 @@
 </head>
 <body>
   <div id="app">This text is outside the web component</div>
+  <button id="btnLoadData">Load data</button>
   <div>
-    <example-form></example-form>
+    <example-form data='{"email":"nathan@email.com"}' title="Please Login!" 
+      id="form-one"></example-form>
   </div>
   
+
+  <script type="text/javascript">
+    var formOne = document.getElementById('form-one');
+    formOne.addEventListener('example-form-submit', function(ev) {
+      console.log('example-form-submit fired...');
+      console.log(ev.detail[0]);
+    });
+
+    document.getElementById('btnLoadData').addEventListener('click', function(){
+      formOne.data = {email: 'change@email.com', rememberMe: true};
+    });
+  </script>
 </body>
 </html>

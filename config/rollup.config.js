@@ -82,6 +82,7 @@ let rollupPlugins = [
   }),
   vue({
     css: true,
+    compileTemplate: true,
     style: {
       preprocessOptions: {
         scss: {
@@ -118,7 +119,7 @@ let devBuild = {
   output: {
     file: 'build/dist/' + moduleName + '.dev.js',
     format: 'umd',
-    sourcemap: true
+    // sourcemap: true
   },
   plugins: rollupPlugins
 };
