@@ -53,7 +53,7 @@ __IMPORTANT:__ In all use cases, you need to set the _documentRegisterElementScr
 
 You can use the component by simply include the js file in your html page via a script tag. Refer to the index .html files in the _/build_ directory for examples.
 
-Simple the js file into your html page and use the custom element as you wish, example below:
+Add the js file into your html page and use the custom element as you wish, example below:
 
 ```html
 <!doctype html>
@@ -62,7 +62,7 @@ Simple the js file into your html page and use the custom element as you wish, e
     <script type="text/javascript">
       window.documentRegisterElementScriptPath = './polyfills/document-register-element.js';
     </script>
-    <script src="./dist/firebase-chat.bundle.umd.min.js"></script>
+    <script src="./dist/example-form.bundle.umd.min.js"></script>
   </head>
   <body>
     <!-- Use our custom element -->
