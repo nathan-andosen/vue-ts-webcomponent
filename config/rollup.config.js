@@ -207,7 +207,7 @@ let prodBuildEsm = {
     'jquery/dist/jquery.slim.js',
     'popper.js',
     'bootstrap',
-    'bootstrap/scss/bootstrap'
+    'bootstrap/scss/bootstrap.scss'
   ],
   plugins: rollupPlugins
 };
