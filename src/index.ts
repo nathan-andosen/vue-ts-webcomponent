@@ -1,15 +1,16 @@
 import "./polyfills";
 import { Vue } from "vue-property-decorator";
 import VueCustomElement from 'vue-custom-element';
-// require bootstrap
+
+// bootstrap dependency
 import "jquery/dist/jquery.slim.js";
 import "popper.js";
 import "bootstrap";
 import "bootstrap/scss/bootstrap.scss";
 
 import ExampleFormComponent from './example-form.component.vue';
+import { COMPONENT_NAME } from './example-form.component';
 const component: any = ExampleFormComponent;
-const componentName = 'example-form';
 Vue.use(VueCustomElement);
 
 /**
@@ -17,23 +18,21 @@ Vue.use(VueCustomElement);
  *
  */
 const loadWebComponent = () => {
+  let element: any;
   // for some reason rollupjs plugin rollup-plugin-vue does not output the 
   // same as webpack, so the component is inside a property called components
   if(component['components']) {
-    console.log(component['components']);
-    let c = new component['components']['example-form']();
-    const elem: any = Vue.customElement(componentName, c.$options);
-    elem.prototype.passData = function(data) {
-      this.getVueInstance().passData(data);
-    };
+    let c = new component['components'][COMPONENT_NAME]();
+    element = Vue.customElement(COMPONENT_NAME, c.$options);
   } else {
     // handle webpack build
     let c = new component();
-    const elem: any = Vue.customElement(componentName, c.$options);
-    elem.prototype.passData = function(data) {
-      this.getVueInstance().passData(data);
-    };
+    element = Vue.customElement(COMPONENT_NAME, c.$options);
   }
+  // create your own custom methods on the custum element
+  element.prototype.passData = function(data) {
+    this.getVueInstance().passData(data);
+  };
 };
 
 

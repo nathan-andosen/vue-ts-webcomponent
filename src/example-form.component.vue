@@ -21,14 +21,16 @@
       <button v-on:click="submitForm" class="btn btn-primary">Submit</button>
     </div>
 
-    <!-- <div>
+    <div class="phone-num">
       <span class="icomoon-phone"></span>
-    </div> -->
+      1800 000 111
+    </div>
     <footer-component></footer-component>
     <!-- Cant include images in html yet -->
     <!-- <img src="./assets/images/fake-logo.png" /> -->
   </div>
 </template>
+
 <script lang="ts" src="./example-form.component.ts"></script>
 <style lang="scss" scoped src ="./example-form.component.scss"></style>
 

@@ -1,7 +1,71 @@
 
-# (Work in progress) Vue typescript webcomponent
+# Vue typescript web component
 
-Seed app to build a web component using typescript and VueJs.
+Seed app / example component to build a custom element web component using Typescript, Scss and Vue.js.
+
+## Dependencies
+
+* Vue.js - https://vuejs.org/
+* vue-custom-element - https://github.com/karol-f/vue-custom-element
+  * Used to create the custom element with IE11 support
+  * You could use the offical component wrapper - https://github.com/vuejs/vue-web-component-wrapper
+* vue-property-decorator - https://github.com/kaorun343/vue-property-decorator
+* document-register-element - https://github.com/WebReflection/document-register-element
+  * Polyfill, only downloaded if required.
+
+## Features:
+
+* Uses RollupJs to create different builds:
+  * __.bundle.umd.min.js__ - UMD build that includes all dependencies (In this example seed app, we also use bootstrap, which is completely optional)
+  * __.umd.min.js__ - UMD build excluding dependencies
+  * __.esm.js__ - ES Module build to be used with a module bundler like webpack
+* All assets are included into the one js file
+  * css is injected into the head element as a style tag
+  * font icons are base64 encoded into the css
+  * images inside css are base64 encoded
+  * ability to import css files from node_modules
+* Code is written in Typescript
+* Vue.js is used for ease of development
+* Development process made easy, uses file watching and live reloading
+* Icomoon is used for font icons - https://icomoon.io/
+* Comprehensive seed app / example, this includes examples of how to do the following:
+  * Include a third party library like Bootstrap 4 into the component
+  * Use font icons
+  * Ability to pass data to the custom element via attributes, properties or functions
+  * Ability to listen to custom events being fired by the custom element
+  * Use Typescript with Vue.js and vue-property-decorated
+
+# Use cases:
+
+_How to use the custom element component in different apps with different frameworks._
+
+## Static script tag
+
+You can use the component by simply include the js file in your html page via a script tag. Refer to the index .html files in the _/build_ directory for examples.
+
+## Angular
+
+_Coming soon._
+
+# Development
+
+__Starting a new web component:__
+
+* Clone the repo
+* Run ``npm install``
+* Now you will want to change the name of the component, this will need to be done in a few places:
+  * Change the file names under the directory _/src_
+  * You will also need to update file url's and component names in the source files
+  * Update the index .html files in the _/build_ directory. These are used for development, so you can change these to your needs.
+  * Update the componentName in the _/config/rollup.config.js_ file.
+  * Also update the package file properties: _name_, _main_ and _module_.
+* You should be good to go, refer to the commands below.
+
+__Commands:__
+
+``npm run dev`` - Run this command when development on the component. It will start a server on http://localhost:9001/ and reload the server on any file changes.
+
+``npm run build`` - Will build the distribution files.
 
 # Known Issues:
 
@@ -11,40 +75,4 @@ an asnyc error (Use process(css).then(cb) to work with async plugins).
 2. Can not set an img in the html and expect the src to change to base64. This
 only happens with images set in css.
 
-# Currently working on:
 
-* Create the web component that will contain:
-  * Events that are fired externally
-  * Font icons and an image
-  * Another vue component
-  * Use external css framework like material design??
-
-# Tasks / Functionality required
-
-* (DONE) Setup a nice dev workflow
-  * Uses grunt with livereload and starts an express server
-* (DONE) One JS file that contains all code (css, font icons, images and javascript)
-* (DONE) One build that outputs different formats.
-  * UMD build with all code (including vuejs frameowrk)
-  * UMD build without vuejs & vue-custom-element
-  * ES build to be used in apps that are using another module bundler
-* (DONE) Build as web component using vue-custom-element (so we have support for IE11)
-* (DONE) Scoped css
-* Give examples of how to use with external events and functions
-* Should be able to use other .vue components inside this component
-* Give examples of using this component in the following scenarios:
-  * Inside another VueJs application (using npm)
-  * Inside an Angular application
-  * Inside a static application with no js libraries (no npm)
-* Unit tests and e2e tests
-* (DONE) How to use an external library like material design
-
-
-
-# Size of component
-
-* __Initial size:__ 15kb min
-  * Bare bones, only displays simple text
-* __Full component:__ ??kb min
-  * Includes css framework (material design)
-  * Some font icons

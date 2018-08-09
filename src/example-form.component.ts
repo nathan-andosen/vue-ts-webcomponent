@@ -1,5 +1,10 @@
-import { Vue, Component, Prop, Watch } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 import FooterComponent from './components/footer/footer.component.vue';
+
+// the name of the component, this is also the name of the custom element that
+// gets created
+export const COMPONENT_NAME = 'example-form';
+
 
 interface iData {
   email?: string;
@@ -8,7 +13,7 @@ interface iData {
 }
 
 @Component({
-  name: 'example-form',
+  name: COMPONENT_NAME,
   components: {
     'footer-component': FooterComponent
   }

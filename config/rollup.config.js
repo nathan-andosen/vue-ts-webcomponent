@@ -15,7 +15,7 @@ const mime = require('mime');
 const path = require('path');
 const isProd = (process.env.NODE_ENV === 'prod') ? true : false;
 
-const moduleName = 'example-form';
+const componentName = 'example-form';
 
 /**
  * Encode a file url into base64
@@ -139,7 +139,7 @@ let rollupPlugins = [
 let devBuild = {
   input: 'src/index.ts',
   output: {
-    file: 'build/dist/' + moduleName + '.dev.js',
+    file: 'build/dist/' + componentName + '.dev.js',
     format: 'umd',
     // sourcemap: true // does not seem to work well with .vue files
   },
@@ -150,7 +150,7 @@ let devBuild = {
 let prodBuildAll = {
   input: 'src/index.ts',
   output: {
-    file: 'build/dist/' + moduleName + '.bundle.umd.min.js',
+    file: 'build/dist/' + componentName + '.bundle.umd.min.js',
     format: 'umd'
   },
   plugins: rollupPlugins.concat([
@@ -163,7 +163,7 @@ let prodBuildAll = {
 let prodBuildNoDeps = {
   input: 'src/index.ts',
   output: {
-    file: 'build/dist/' + moduleName + '.umd.min.js',
+    file: 'build/dist/' + componentName + '.umd.min.js',
     format: 'umd',
     globals: {
       'vue': 'Vue',
@@ -191,7 +191,7 @@ let prodBuildNoDeps = {
 let prodBuildEsm = {
   input: 'src/index.ts',
   output: {
-    file: 'build/dist/' + moduleName + '.esm.js',
+    file: 'build/dist/' + componentName + '.esm.js',
     format: 'esm',
     globals: {
       'vue': 'Vue',
