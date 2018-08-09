@@ -39,13 +39,56 @@ Seed app / example component to build a custom element web component using Types
 
 _How to use the custom element component in different apps with different frameworks._
 
+__IMPORTANT:__ In all use cases, you need to set the _documentRegisterElementScriptPath_ to the path where the polyfill can be found, example below:
+
+```javascript
+<script type="text/javascript">
+  // incase the browser does not support custom elements, we need to know
+  // where we can download the polyfill from
+  window.documentRegisterElementScriptPath = './polyfills/document-register-element.js';
+</script>
+```
+
 ## Static script tag
 
 You can use the component by simply include the js file in your html page via a script tag. Refer to the index .html files in the _/build_ directory for examples.
 
+Simple the js file into your html page and use the custom element as you wish, example below:
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <script type="text/javascript">
+      window.documentRegisterElementScriptPath = './polyfills/document-register-element.js';
+    </script>
+    <script src="./dist/firebase-chat.bundle.umd.min.js"></script>
+  </head>
+  <body>
+    <!-- Use our custom element -->
+    <example-form></example-form>
+  </body>
+</html>
+```
+
 ## Angular
 
-_Coming soon._
+To use the custom element in Angular 2+, we need to tell Angular that we are using custom elements.
+
+```javascript
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+// simple import our custom element here which should have been installed
+// via npm module
+import "vue-ts-webcomponent";
+
+@NgModule({
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
+})
+export class AppModule {}
+```
 
 # Development
 
