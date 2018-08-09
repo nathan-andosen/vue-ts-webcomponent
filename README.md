@@ -3,6 +3,14 @@
 
 Seed app to build a web component using typescript and VueJs.
 
+# Known Issues:
+
+1. Can not use cssnano to minify css injected into the head element. It gives
+an asnyc error (Use process(css).then(cb) to work with async plugins).
+
+2. Can not set an img in the html and expect the src to change to base64. This
+only happens with images set in css.
+
 # Currently working on:
 
 * Create the web component that will contain:

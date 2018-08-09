@@ -5,7 +5,7 @@ import VueCustomElement from 'vue-custom-element';
 import "jquery/dist/jquery.slim.js";
 import "popper.js";
 import "bootstrap";
-import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/scss/bootstrap.scss";
 
 import ExampleFormComponent from './example-form.component.vue';
 const component: any = ExampleFormComponent;
@@ -20,7 +20,8 @@ const loadWebComponent = () => {
   // for some reason rollupjs plugin rollup-plugin-vue does not output the 
   // same as webpack, so the component is inside a property called components
   if(component['components']) {
-    let c = new component['components'].ExampleFormComponent();
+    console.log(component['components']);
+    let c = new component['components']['example-form']();
     const elem: any = Vue.customElement(componentName, c.$options);
     elem.prototype.passData = function(data) {
       this.getVueInstance().passData(data);

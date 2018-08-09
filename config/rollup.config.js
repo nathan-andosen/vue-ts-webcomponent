@@ -5,6 +5,8 @@ import commonjs from 'rollup-plugin-commonjs';
 import buble from 'rollup-plugin-buble';
 import replace from 'rollup-plugin-replace';
 import { uglify } from 'rollup-plugin-uglify';
+import cssnano from 'cssnano';
+import postcss from 'rollup-plugin-postcss';
 import postcssUrl from 'postcss-url';
 import postcssUrlEncode from 'postcss-url/src/lib/encode';
 const fs = require('fs');
@@ -83,20 +85,13 @@ let rollupPlugins = [
   vue({
     css: true,
     compileTemplate: true,
-    // blackListCustomBlocks: ['bootstrap/scss/bootstrap'],
     style: {
-      // postcssOptions: {
-      //   onImport: (a, b) => {
-      //     console.log('1111111111');
-      //     console.log(a);
-      //     console.log(b);
-      //   }
-      // },
       preprocessOptions: {
         scss: {
           includePaths: ['node_modules']
         }
       },
+      // handle scss and css inside of .vue file
       postcssPlugins: [
         postcssUrl({
           basePath: [
@@ -109,9 +104,28 @@ let rollupPlugins = [
           url: function(asset, dir, options, decl, warn, result) {
             return encodeUrlHandler(asset, dir, options, decl, warn, result);
           }
-        })
+        }),
+        // cssnano()
       ]
     }
+  }),
+  // handle scss and css outside of .vue file
+  postcss({
+    plugins: [
+      postcssUrl({
+        basePath: [
+          './src',
+          
+          // if you have any node_modules that have css that include font or
+          // image urls, add the node_module directory here
+          // './node_modules/aaa'
+        ],
+        url: function(asset, dir, options, decl, warn, result) {
+          return encodeUrlHandler(asset, dir, options, decl, warn, result);
+        }
+      }),
+      // cssnano()
+    ]
   }),
   resolve(),
   commonjs(),
@@ -165,11 +179,11 @@ let prodBuildNoDeps = {
     'jquery/dist/jquery.slim.js',
     'popper.js',
     'bootstrap',
-    'bootstrap/scss/bootstrap'
+    'bootstrap/scss/bootstrap.scss'
   ],
   plugins: rollupPlugins.concat([
     buble(),
-    // uglify()
+    uglify()
   ])
 };
 

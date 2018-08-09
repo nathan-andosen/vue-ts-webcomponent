@@ -8,6 +8,7 @@ interface iData {
 }
 
 @Component({
+  name: 'example-form',
   components: {
     'footer-component': FooterComponent
   }
