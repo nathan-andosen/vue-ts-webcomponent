@@ -1,10 +1,11 @@
 import "./polyfills";
 import { Vue } from "vue-property-decorator";
 import VueCustomElement from 'vue-custom-element';
-// require('bootstrap');
+// require bootstrap
 import "jquery/dist/jquery.slim.js";
 import "popper.js";
 import "bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
 
 import ExampleFormComponent from './example-form.component.vue';
 const component: any = ExampleFormComponent;
@@ -20,11 +21,17 @@ const loadWebComponent = () => {
   // same as webpack, so the component is inside a property called components
   if(component['components']) {
     let c = new component['components'].ExampleFormComponent();
-    Vue.customElement(componentName, c.$options);
+    const elem: any = Vue.customElement(componentName, c.$options);
+    elem.prototype.passData = function(data) {
+      this.getVueInstance().passData(data);
+    };
   } else {
     // handle webpack build
     let c = new component();
-    Vue.customElement(componentName, c.$options);
+    const elem: any = Vue.customElement(componentName, c.$options);
+    elem.prototype.passData = function(data) {
+      this.getVueInstance().passData(data);
+    };
   }
 };
 

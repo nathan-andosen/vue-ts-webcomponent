@@ -83,7 +83,15 @@ let rollupPlugins = [
   vue({
     css: true,
     compileTemplate: true,
+    // blackListCustomBlocks: ['bootstrap/scss/bootstrap'],
     style: {
+      // postcssOptions: {
+      //   onImport: (a, b) => {
+      //     console.log('1111111111');
+      //     console.log(a);
+      //     console.log(b);
+      //   }
+      // },
       preprocessOptions: {
         scss: {
           includePaths: ['node_modules']
@@ -119,7 +127,7 @@ let devBuild = {
   output: {
     file: 'build/dist/' + moduleName + '.dev.js',
     format: 'umd',
-    // sourcemap: true
+    // sourcemap: true // does not seem to work well with .vue files
   },
   plugins: rollupPlugins
 };
@@ -128,7 +136,7 @@ let devBuild = {
 let prodBuildAll = {
   input: 'src/index.ts',
   output: {
-    file: 'build/dist/' + moduleName + '.umd.min.js',
+    file: 'build/dist/' + moduleName + '.bundle.umd.min.js',
     format: 'umd'
   },
   plugins: rollupPlugins.concat([
@@ -137,20 +145,27 @@ let prodBuildAll = {
   ])
 };
 
-// PROD UMD BUILD NO VUE
-let prodBuildNoVue = {
+// PROD UMD BUILD NO DEPS
+let prodBuildNoDeps = {
   input: 'src/index.ts',
   output: {
-    file: 'build/dist/' + moduleName + '.umd.novue.min.js',
+    file: 'build/dist/' + moduleName + '.umd.min.js',
     format: 'umd',
     globals: {
       'vue': 'Vue',
-      'vue-custom-element': 'VueCustomElement'
+      'vue-custom-element': 'VueCustomElement',
+      'jquery/dist/jquery.slim.js': 'jQuery',
+      'popper.js': 'Popper',
+      'bootstrap': 'bootstrap'
     }
   },
   external: [
     'vue',
-    'vue-custom-element'
+    'vue-custom-element',
+    'jquery/dist/jquery.slim.js',
+    'popper.js',
+    'bootstrap',
+    'bootstrap/scss/bootstrap'
   ],
   plugins: rollupPlugins.concat([
     buble(),
@@ -166,12 +181,19 @@ let prodBuildEsm = {
     format: 'esm',
     globals: {
       'vue': 'Vue',
-      'vue-custom-element': 'VueCustomElement'
+      'vue-custom-element': 'VueCustomElement',
+      'jquery/dist/jquery.slim.js': 'jQuery',
+      'popper.js': 'Popper',
+      'bootstrap': 'bootstrap'
     }
   },
   external: [
     'vue',
-    'vue-custom-element'
+    'vue-custom-element',
+    'jquery/dist/jquery.slim.js',
+    'popper.js',
+    'bootstrap',
+    'bootstrap/scss/bootstrap'
   ],
   plugins: rollupPlugins
 };
@@ -183,7 +205,7 @@ let exportBuilds = [];
 if(isProd) {
   exportBuilds = [
     prodBuildAll,
-    prodBuildNoVue,
+    prodBuildNoDeps,
     prodBuildEsm
   ];
 } else {

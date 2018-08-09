@@ -1,7 +1,6 @@
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import FooterComponent from './components/footer/footer.component.vue';
 
-
 interface iData {
   email?: string;
   password?: string;
@@ -18,9 +17,14 @@ export default class ExampleFormComponent extends Vue {
   password: string = "";
   rememberMe: boolean = false;
 
-  @Prop() data!: iData;
+  data!: iData;
   @Prop() title!: string;
 
+  /**
+   * Creates an instance of ExampleFormComponent.
+   * 
+   * @memberof ExampleFormComponent
+   */
   constructor() {
     super();
     if(typeof this.data === 'string') {
@@ -30,17 +34,37 @@ export default class ExampleFormComponent extends Vue {
     this.title = (this.title) ? this.title : 'Welcome!';
   }
 
+
+  /**
+   * Get the data as a json object
+   *
+   * @private
+   * @returns {iData}
+   * @memberof ExampleFormComponent
+   */
   private getData(): iData {
     return JSON.parse(JSON.stringify(this.data));
   }
 
-  @Watch('data')
-  onDataChanged(val: iData, oldVal: iData) {
-    console.log('Data changed', this.getData());
+
+  /**
+   * This function will be exposed onto the custom element
+   *
+   * @private
+   * @param {iData} data
+   * @memberof ExampleFormComponent
+   */
+  private passData(data: iData) {
+    this.data = data;
   }
 
+
+  /**
+   * Submit the form
+   *
+   * @memberof ExampleFormComponent
+   */
   submitForm() {
-    // console.log(this.email, this.password, this.rememberMe);
     this.$emit('example-form-submit', this.getData());
   }
 }
