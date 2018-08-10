@@ -35,6 +35,20 @@ Seed app / example component to build a custom element web component using Types
   * Ability to listen to custom events being fired by the custom element
   * Use Typescript with Vue.js and vue-property-decorated
 
+## Getting started
+
+If you want to use this seed app to build your own Vue.js web component, follow the steps below:
+
+* Simple clone the repo
+* Run ``npm install``
+* Now you will want to change the name of the component, this will need to be done in a few places:
+  * Change the file names under the directory _/src_
+  * You will also need to update file url's and component names in the source files
+  * Update the index .html files in the _/build_ directory. These are used for development, so you can change these to your needs.
+  * Update the componentName in the _/config/rollup.config.js_ file.
+  * Also update the package file properties: _name_, _main_ and _module_.
+* You should be good to go, refer to the  build commands below in the development section.
+
 # Use cases:
 
 _How to use the custom element component in different apps with different frameworks._
@@ -96,12 +110,6 @@ __Starting a new web component:__
 
 * Clone the repo
 * Run ``npm install``
-* Now you will want to change the name of the component, this will need to be done in a few places:
-  * Change the file names under the directory _/src_
-  * You will also need to update file url's and component names in the source files
-  * Update the index .html files in the _/build_ directory. These are used for development, so you can change these to your needs.
-  * Update the componentName in the _/config/rollup.config.js_ file.
-  * Also update the package file properties: _name_, _main_ and _module_.
 * You should be good to go, refer to the commands below.
 
 __Commands:__
