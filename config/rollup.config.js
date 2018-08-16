@@ -6,7 +6,7 @@ import buble from 'rollup-plugin-buble';
 import replace from 'rollup-plugin-replace';
 import { uglify } from 'rollup-plugin-uglify';
 import cssnano from 'cssnano';
-import postcss from 'rollup-plugin-postcss';
+import rollupPostcss from 'rollup-plugin-postcss';
 import postcssUrl from 'postcss-url';
 import postcssUrlEncode from 'postcss-url/src/lib/encode';
 const fs = require('fs');
@@ -91,7 +91,7 @@ let rollupPlugins = [
           includePaths: ['node_modules']
         }
       },
-      // handle scss and css inside of .vue file
+      // handle scss & css inside of .vue file
       postcssPlugins: [
         postcssUrl({
           basePath: [
@@ -109,8 +109,8 @@ let rollupPlugins = [
       ]
     }
   }),
-  // handle scss and css outside of .vue file
-  postcss({
+  // handle scss & css outside of .vue file
+  rollupPostcss({
     plugins: [
       postcssUrl({
         basePath: [

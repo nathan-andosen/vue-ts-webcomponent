@@ -2,11 +2,15 @@ import "./polyfills";
 import { Vue } from "vue-property-decorator";
 import VueCustomElement from 'vue-custom-element';
 
+import "./main.scss";
+
 // bootstrap dependency
 import "jquery/dist/jquery.slim.js";
 import "popper.js";
 import "bootstrap";
-import "bootstrap/scss/bootstrap.scss";
+// You could import bootstrap scss here, or in the main.scss file. Its better
+// in the main.scss file as you can override styling
+// import "bootstrap/scss/bootstrap.scss";
 
 import ExampleFormComponent from './example-form.component.vue';
 import { COMPONENT_NAME } from './example-form.component';

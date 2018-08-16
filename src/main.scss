@@ -1,0 +1,11 @@
+// You can import node modules scss files here
+// you can override bootstrap styling here, like the blue below.
+$blue: #ff9900;
+@import "~bootstrap/scss/bootstrap.scss";
+
+// put common styles and imports in this file.
+.my-common-style {
+  color: #000;
+}
+
+
