@@ -39,8 +39,10 @@ Seed app / example component to build a custom element web component using Types
 
 If you want to use this seed app to build your own Vue.js web component, follow the steps below:
 
-* Simple clone the repo
-* Run ``npm install``
+* Simple clone the repo: git clone https://github.com/nathan-andosen/vue-ts-webcomponent.git my-component
+* cd my-component
+* Remove the git origin: ``git remote rm origin``
+* Install dependencies: ``npm install``
 * Now you will want to change the name of the component, this will need to be done in a few places:
   * Change the file names under the directory _/src_
   * You will also need to update file url's and component names in the source files
